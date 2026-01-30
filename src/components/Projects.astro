@@ -1,0 +1,88 @@
+---
+import { currentTheme } from '../config/theme.js';
+
+// Sample projects - you can modify this data
+const projects = [
+  {
+    title: "Project One",
+    description: "A brief description of your amazing project. What problem does it solve?",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    github: "https://github.com/username/project",
+    demo: "https://project-demo.com",
+    image: "/project1.jpg" // Add your project images to public folder
+  },
+  {
+    title: "Project Two",
+    description: "Another cool project showcasing your skills and creativity.",
+    tech: ["Astro", "Node.js", "MongoDB"],
+    github: "https://github.com/username/project2",
+    demo: "https://project2-demo.com",
+    image: "/project2.jpg"
+  },
+  {
+    title: "Project Three",
+    description: "A third project that demonstrates your range and expertise.",
+    tech: ["Vue.js", "Python", "PostgreSQL"],
+    github: "https://github.com/username/project3",
+    demo: "https://project3-demo.com",
+    image: "/project3.jpg"
+  }
+];
+---
+
+<section id="projects" class="container mx-auto px-6 py-20">
+  <div class="text-center mb-16">
+    <h2 class={`text-4xl md:text-5xl font-bold mb-4 ${currentTheme.text.primary}`}>
+      Featured Projects
+    </h2>
+    <p class={`text-lg md:text-xl max-w-2xl mx-auto ${currentTheme.text.secondary}`}>
+      Here are some of the projects I've worked on recently. Each one represents a unique challenge and learning experience.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {projects.map((project) => (
+      <div class={`rounded-xl border p-6 transition-all duration-300 hover:scale-105 flex flex-col h-full ${currentTheme.cards}`}>
+        {/* Project Image Placeholder */}
+        <div class="w-full h-48 bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg mb-4 flex items-center justify-center">
+          <span class="text-gray-600 font-medium">Project Image</span>
+        </div>
+        
+        <h3 class={`text-xl font-bold mb-3 ${currentTheme.text.primary}`}>
+          {project.title}
+        </h3>
+        
+        <p class={`mb-4 flex-grow ${currentTheme.text.secondary}`}>
+          {project.description}
+        </p>
+        
+        <div class="flex flex-wrap gap-2 mb-6">
+          {project.tech.map((tech) => (
+            <span class={`px-3 py-1 text-sm rounded-full ${currentTheme.text.accent} bg-white/10`}>
+              {tech}
+            </span>
+          ))}
+        </div>
+        
+        <div class="flex gap-4 mt-auto">
+          <a 
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`flex-1 text-center px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentTheme.buttons.secondary}`}
+          >
+            GitHub
+          </a>
+          <a 
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`flex-1 text-center px-4 py-2 rounded-lg font-medium transition-all duration-300 ${currentTheme.buttons.primary}`}
+          >
+            Live Demo
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

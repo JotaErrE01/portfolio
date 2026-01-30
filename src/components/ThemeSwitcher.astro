@@ -1,0 +1,30 @@
+---
+// This is a development helper component
+// Remove or comment out when you deploy your portfolio
+import { themes } from '../config/theme.js';
+---
+
+<div class="fixed top-4 right-4 z-50">
+  <div class="bg-black/20 backdrop-blur-sm rounded-lg p-2">
+    <p class="text-white text-sm mb-2">Theme Switcher (Dev Only)</p>
+    <p class="text-white/70 text-xs mb-2">
+      Change theme in src/config/theme.js
+    </p>
+    <div class="space-y-1">
+      {Object.entries(themes).map(([key, theme]) => (
+        <div class="text-xs text-white/80">
+          • {theme.name}
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Only show in development */
+  @media (max-width: 768px) {
+    div {
+      display: none;
+    }
+  }
+</style>
