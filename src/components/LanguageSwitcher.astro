@@ -1,0 +1,33 @@
+---
+import { currentTheme } from '../config/theme.js';
+
+const currentLocale = 'en';
+const isEnglish = 'en';
+---
+
+<div class="fixed top-4 right-4 z-50">
+  <div class={`flex gap-2 p-2 rounded-full backdrop-blur-md ${currentTheme.cards}`}>
+    <a 
+      href="/" 
+      class={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
+        isEnglish 
+          ? 'bg-cyan-500 text-white' 
+          : 'hover:bg-white/10'
+      }`}
+      aria-label="Switch to English"
+    >
+      EN
+    </a>
+    <a 
+      href="/es" 
+      class={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
+        !isEnglish 
+          ? 'bg-cyan-500 text-white' 
+          : 'hover:bg-white/10'
+      }`}
+      aria-label="Cambiar a Español"
+    >
+      ES
+    </a>
+  </div>
+</div>
