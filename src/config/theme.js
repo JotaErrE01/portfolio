@@ -16,13 +16,13 @@ export const themes = {
   },
   nightDarkSky: {
     name: 'Night Dark Sky',
-    background: 'from-slate-950 via-[#101E39] to-slate-900',
+    background: 'from-[#101E39] via-black to-[#101E39]',
     text: {
       primary: 'text-white',
       secondary: 'text-blue-100',
       accent: 'text-blue-300'
     },
-    cards: 'bg-white/8 backdrop-blur-sm border-white/15',
+    cards: 'bg-white/8 backdrop-blur-[2px] border-white/15',
     buttons: {
       primary: 'bg-blue-600 hover:bg-blue-500 text-white',
       secondary: 'bg-white/15 hover:bg-white/25 text-white border border-white/25'
