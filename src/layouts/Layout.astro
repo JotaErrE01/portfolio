@@ -1,5 +1,6 @@
 ---
 import { currentTheme } from '../config/theme.js';
+import ToastProvider from '../components/ToastProvider';
 
 export interface Props {
   title: string;
@@ -24,6 +25,7 @@ const { title, description = 'My awesome portfolio' } = Astro.props;
     <main>
       <slot />
     </main>
+    <ToastProvider client:load />
   </body>
 </html>
 

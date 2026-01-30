@@ -1,33 +1,60 @@
 ---
 import { currentTheme } from '../config/theme.js';
 
-const currentLocale = 'en';
-const isEnglish = 'en';
+const currentLocale = Astro.url.pathname.startsWith('/es') ? 'es' : 'en';
+const isEnglish = currentLocale === 'en';
 ---
 
-<div class="fixed top-4 right-4 z-50">
-  <div class={`flex gap-2 p-2 rounded-full backdrop-blur-md ${currentTheme.cards}`}>
+<div class="absolute top-4 left-4 z-50">
+  <div class={`flex gap-4 p-2 backdrop-blur-md ${currentTheme.cards} items-center max-h-8`}>
     <a 
       href="/" 
-      class={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-        isEnglish 
-          ? 'bg-cyan-500 text-white' 
-          : 'hover:bg-white/10'
-      }`}
+      class={`rounded-full font-bold transition-all duration-300 hover:text-white
+        ${isEnglish ? 'text-lg text-white' : 'text-white/80'}
+      `}
       aria-label="Switch to English"
     >
       EN
     </a>
+
+    <div class="border-l border-[1px] border-white h-4"></div>
+    
+
     <a 
       href="/es" 
-      class={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-        !isEnglish 
-          ? 'bg-cyan-500 text-white' 
-          : 'hover:bg-white/10'
-      }`}
+      class={`rounded-full font-bold transition-all duration-300 hover:text-white
+        ${!isEnglish ? 'text-lg text-white' : 'text-white/80'}
+      `}
       aria-label="Cambiar a Español"
     >
       ES
     </a>
   </div>
+  <!-- <div class={`flex gap-2 p-2 rounded-full backdrop-blur-md ${currentTheme.cards}`}>
+    <a 
+      href="/" 
+      class={`px-4 py-2 rounded-full font-extrabold transition-all duration-300 ${
+        isEnglish 
+          ? `${currentTheme.buttons.primary} text-white` 
+          : `hover:bg-white/10 ${currentTheme.text.primary}`
+      }`}
+      aria-label="Switch to English"
+    >
+      EN
+    </a>
+
+
+
+    <a 
+      href="/es" 
+      class={`px-4 py-2 rounded-full font-extrabold transition-all duration-300 ${
+        !isEnglish 
+          ? `${currentTheme.buttons.primary} text-white` 
+          : `hover:bg-white/10 ${currentTheme.text.primary}`
+      }`}
+      aria-label="Cambiar a Español"
+    >
+      ES
+    </a>
+  </div> -->
 </div>

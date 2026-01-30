@@ -14,8 +14,8 @@ export const themes = {
       secondary: 'bg-white/20 hover:bg-white/30 text-white border border-white/30'
     }
   },
-  nightDarkSky: {
-    name: 'Night Dark Sky',
+  space: {
+    name: 'Space',
     background: 'from-[#101E39] via-black to-[#101E39]',
     text: {
       primary: 'text-white',
@@ -60,4 +60,4 @@ export const themes = {
 };
 
 // Current active theme - change this to switch themes
-export const currentTheme = themes.nightDarkSky;
+export const currentTheme = themes.space;

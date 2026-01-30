@@ -2,23 +2,27 @@
 // This is a development helper component to visualize available themes.
 // It does not implement actual theme switching functionality.
 import { themes } from '../config/theme.js';
+
+const isDev = import.meta.env.DEV;
 ---
 
-<div class="fixed top-4 right-4 z-50">
-  <div class="bg-black/20 backdrop-blur-sm rounded-lg p-2">
-    <p class="text-white text-sm mb-2">Theme Switcher (Dev Only)</p>
-    <p class="text-white/70 text-xs mb-2">
-      Change theme in src/config/theme.js
-    </p>
-    <div class="space-y-1">
-      {Object.entries(themes).map(([key, theme]) => (
-        <div class="text-xs text-white/80">
-          • {theme.name}
-        </div>
-      ))}
+{isDev && (
+  <div class="fixed top-4 right-4 z-50">
+    <div class="bg-black/20 backdrop-blur-sm rounded-lg p-2">
+      <p class="text-white text-sm mb-2">Theme Switcher (Dev Only)</p>
+      <p class="text-white/70 text-xs mb-2">
+        Change theme in src/config/theme.js
+      </p>
+      <div class="space-y-1">
+        {Object.entries(themes).map(([key, theme]) => (
+          <div class="text-xs text-white/80">
+            • {theme.name}
+          </div>
+        ))}
+      </div>
     </div>
   </div>
-</div>
+)}
 
 <style>
   /* Only show in development */

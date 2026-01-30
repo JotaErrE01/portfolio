@@ -1,7 +1,7 @@
 export const languages = {
   en: 'English',
   es: 'Español',
-};
+} as const;
 
 export const defaultLang = 'en';
 
@@ -21,9 +21,7 @@ export const ui = {
       'subtitle': 'Here are some of the projects I\'ve worked on recently. Each one represents a unique challenge and learning experience.',
       'viewCode': 'View Code',
       'viewDemo': 'Live Demo',
-      'videoDemo': 'Video Demo',
       'placeholderImage': 'Project Image',
-      'privateRepo': 'Private Repo',
     },
     'contact': {
       'title': 'Let\'s Work Together',
@@ -37,9 +35,6 @@ export const ui = {
       'messagePlaceholder': 'Tell me about your project...',
       'sendButton': 'Send Message',
       'locationValue': 'Guayaquil, Ecuador',
-      'toastSending': 'Sending your message...',
-      'toastSuccess': 'Message sent successfully! I\'ll get back to you soon.',
-      'toastError': 'Oops! There was a problem sending your message. Please try again.',
     },
     'projectData': {
       'project1': {
@@ -71,9 +66,7 @@ export const ui = {
       'subtitle': 'Aquí hay algunos de los proyectos en los que he trabajado recientemente. Cada uno representa un desafío único y una experiencia de aprendizaje.',
       'viewCode': 'Ver Código',
       'viewDemo': 'Ver Demo',
-      'videoDemo': 'Ver Video',
       'placeholderImage': 'Imagen del Proyecto',
-      'privateRepo': 'Repo Privado',
     },
     'contact': {
       'title': 'Trabajemos Juntos',
@@ -87,9 +80,6 @@ export const ui = {
       'messagePlaceholder': 'Cuéntame sobre tu proyecto...',
       'sendButton': 'Enviar Mensaje',
       'locationValue': 'Guayaquil, Ecuador',
-      'toastSending': 'Enviando tu mensaje...',
-      'toastSuccess': '¡Mensaje enviado con éxito! Te responderé pronto.',
-      'toastError': '¡Oops! Hubo un problema al enviar tu mensaje. Por favor, intenta de nuevo.',
     },
     'projectData': {
       'project1': {
@@ -102,10 +92,8 @@ export const ui = {
       },
       'project3': {
         'title': 'Plataforma de Comercio Electrónico',
-        'description': 'Una plataforma de comercio electrónico completa con autenticación y autorización de usuarios, gestión de productos, carrito de compras y un panel de administrador.',
+        'description': 'Una plataforma de comercio electrónico completa con autenticación y autorización de usuarios, gestión de productos, carrito de compras y con un panel de administrador.',
       },
     },
   },
-}
-
-Object.freeze(ui);
+} as const;
