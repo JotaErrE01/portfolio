@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block video files from search indexing (save crawl budget)
+Disallow: /assets/projects/vids/
+
+# Sitemap
+Sitemap: https://portafolio.jotaerre.dev/sitemap.xml

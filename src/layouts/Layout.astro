@@ -1,28 +1,150 @@
 ---
-import { currentTheme } from '../config/theme.js';
-import ToastProvider from '../components/ToastProvider';
+import { currentTheme } from "../config/theme.js";
+import ToastProvider from "../components/ToastProvider";
+import { getLangFromUrl } from '../i18n/utils';
 
-export interface Props {
-  title: string;
+interface Props {
+  title?: string;
   description?: string;
+  image?: string;
 }
 
-const { title, description = 'Welcome to my portfolio' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+
+const {
+  title = "Jonathan Ruiz | Full Stack Developer",
+  description = "Full Stack Developer specializing in React, React Native, AWS, and modern web technologies. Building innovative solutions for web and mobile.",
+  image = "/og-image.png",
+} = Astro.props;
+
+// Safe URL generation
+const siteUrl = Astro.site?.href || 'https://portafolio.jotaerre.dev/';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
+
+const siteName = "Jonathan Ruiz Portfolio";
+const twitterHandle = "@jota_erre_01";
+
+// Language alternates
+const currentPath = Astro.url.pathname;
+const enPath = currentPath.replace('/es', '') || '/';
+const esPath = lang === 'en' ? `/es${currentPath}` : currentPath;
+
+// Safe image URL
+const ogImageUrl = image.startsWith('http') 
+  ? image 
+  : new URL(image, siteUrl).href;
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth" transition:animate="none">
+<!doctype html>
+<html lang={lang} class="scroll-smooth" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-    <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Jonathan Ruiz R" />
+    <meta
+      name="keywords"
+      content="Full Stack Developer, React Developer, React Native, Expo, AWS, Cloud Computing, Node.js, NestJS, SOLID Principles, TypeScript, JavaScript, Web Development, Mobile Apps, Frontend Developer, Backend Developer, Portfolio, Ecuador Developer"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="en" href={`${siteUrl.replace(/\/$/, '')}${enPath}`} />
+    <link rel="alternate" hreflang="es" href={`${siteUrl.replace(/\/$/, '')}${esPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl.replace(/\/$/, '')}${enPath}`} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_EC'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:creator" content={twitterHandle} />
+    <meta name="twitter:site" content={twitterHandle} />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f172a" />
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://api.formspree.io" />
+    <link rel="dns-prefetch" href="https://api.formspree.io" />
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jonathan Ruiz R",
+      "url": siteUrl,
+      "image": ogImageUrl,
+      "sameAs": [
+        "https://github.com/JotaErrE01",
+        "https://linkedin.com/in/jonathan-ruiz-r",
+        "https://twitter.com/jota_erre_01"
+      ],
+      "jobTitle": "Full Stack Developer",
+      "description": description,
+      "knowsAbout": [
+        "React",
+        "React Native",
+        "TypeScript",
+        "JavaScript",
+        "AWS",
+        "Node.js",
+        "NestJS",
+        "Web Development",
+        "Mobile Development"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guayaquil",
+        "addressRegion": "Guayas",
+        "addressCountry": "EC"
+      }
+    })} />
+
+    <!-- WebSite Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": siteName,
+      "url": siteUrl,
+      "description": description,
+      "inLanguage": lang === 'en' ? 'en-US' : 'es-EC'
+    })} />
   </head>
-  <body class={`min-h-dvh bg-gradient-to-br ${currentTheme.background} ${currentTheme.text.primary} antialiased`}>
-    <!-- <main class="relative min-h-dvh flex flex-col"> -->
+  
+  <body
+    class={`min-h-dvh bg-gradient-to-br ${currentTheme.background} ${currentTheme.text.primary} antialiased`}
+  >
     <main>
       <slot />
     </main>
@@ -32,6 +154,19 @@ const { title, description = 'Welcome to my portfolio' } = Astro.props;
 
 <style is:global>
   html {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+  }
+  
+  /* Smooth scrolling for anchor links */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 </style>
