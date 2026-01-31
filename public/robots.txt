@@ -5,4 +5,4 @@ Allow: /
 Disallow: /assets/projects/vids/
 
 # Sitemap
-Sitemap: https://portafolio.jotaerre.dev/sitemap.xml
+Sitemap: https://portfolio.jotaerre.dev/sitemap.xml
