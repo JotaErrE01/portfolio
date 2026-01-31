@@ -7,11 +7,11 @@ export interface Props {
   description?: string;
 }
 
-const { title, description = 'My awesome portfolio' } = Astro.props;
+const { title, description = 'Welcome to my portfolio' } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -21,7 +21,8 @@ const { title, description = 'My awesome portfolio' } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class={`min-h-screen bg-gradient-to-br ${currentTheme.background} ${currentTheme.text.primary} antialiased`}>
+  <body class={`min-h-dvh bg-gradient-to-br ${currentTheme.background} ${currentTheme.text.primary} antialiased`}>
+    <!-- <main class="relative min-h-dvh flex flex-col"> -->
     <main>
       <slot />
     </main>

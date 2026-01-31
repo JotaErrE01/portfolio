@@ -22,12 +22,12 @@ const Twitter = 'https://twitter.com/jota_erre_01/';
   <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
     <!-- Contact Info -->
     <div class="space-y-8">
-      <h3 class={`text-2xl font-bold mb-6 ${currentTheme.text.primary}`}>
+      <h3 class={`text-2xl font-bold mb-6 text-center md:text-start ${currentTheme.text.primary}`}>
         {t('contact.getInTouchTitle')}
       </h3>
       
       <div class="space-y-6">
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 justify-center md:justify-start">
           <div class={`w-12 h-12 rounded-full flex items-center justify-center ${currentTheme.cards}`}>
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -42,7 +42,7 @@ const Twitter = 'https://twitter.com/jota_erre_01/';
       </div>
 
       <!-- Social Links -->
-      <div class="flex space-x-6 pt-4">
+      <div class="flex space-x-6 pt-4 justify-center md:justify-start">
         <a href={Github} target="_blank" rel="noopener noreferrer" 
            class={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${currentTheme.cards}`}>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
