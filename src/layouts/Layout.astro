@@ -18,7 +18,7 @@ const {
 } = Astro.props;
 
 // Safe URL generation
-const siteUrl = Astro.site?.href || 'https://portafolio.jotaerre.dev/';
+const siteUrl = Astro.site?.href || 'https://portfolio.jotaerre.dev/';
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 
 const siteName = "Jonathan Ruiz Portfolio";

@@ -21,7 +21,7 @@ export default defineConfig({
       },
     }),
   ],
-   site: 'https://portafolio.jotaerre.dev',
+   site: 'https://portfolio.jotaerre.dev',
   adapter: cloudflare(),
   i18n: {
     defaultLocale: 'en',
